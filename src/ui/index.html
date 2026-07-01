@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>/*__CSS__*/</style>
+</head>
+<body>
+
+  <div class="p-xxsmall" id="mainView">
+    <div class="header-bar">
+      <div class="section-title" style="padding-left:0; margin:0;">Smart Export</div>
+      <div class="header-actions">
+        <button class="header-btn" id="langToggleBtn" aria-label="Switch language" data-i18n-aria="ui.lang_aria">&#127760;</button>
+        <button class="header-btn" id="themeToggleBtn" aria-label="Toggle theme" data-i18n-aria="ui.theme_aria">&#9790;</button>
+      </div>
+    </div>
+
+    <div class="steps" id="stepsIndicator">
+      <div class="step active" data-step="1"><span class="step-num">1</span><span class="step-label" data-i18n="ui.step_export"></span></div>
+      <div class="step-line"></div>
+      <div class="step" data-step="2"><span class="step-num">2</span><span class="step-label" data-i18n="ui.step_optimize"></span></div>
+    </div>
+
+    <div id="stepExport">
+      <div id="emptyState" class="empty-state" style="display: none;" role="status">
+        <div class="empty-state-icon" aria-hidden="true">&#9633;</div>
+        <p data-i18n="ui.empty_state"></p>
+      </div>
+
+      <div id="analysisSection" style="display: none;">
+        <div class="label" style="padding-left:0;" data-i18n="ui.analysis_title"></div>
+        <div class="analysis-card" id="analysisCard" role="region" data-i18n-aria="ui.analysis_aria"></div>
+
+        <div class="divider"></div>
+
+        <div class="label" style="padding-left:0;" id="formatGroupLabel" data-i18n="ui.format_label"></div>
+        <div class="format-group" id="formatGroup" role="radiogroup" aria-labelledby="formatGroupLabel">
+          <button class="format-btn" data-format="SVG" role="radio" aria-checked="false">SVG</button>
+          <button class="format-btn" data-format="PNG" role="radio" aria-checked="false">PNG</button>
+          <button class="format-btn" data-format="JPG" role="radio" aria-checked="false">JPG</button>
+        </div>
+
+        <div id="densitySection">
+          <div class="label" style="padding-left:0;" id="densityGroupLabel" data-i18n="ui.density_label"></div>
+          <div class="density-group" id="densityGroup" role="radiogroup" aria-labelledby="densityGroupLabel">
+            <button class="density-btn" data-constraint="SCALE:0.5" role="radio" aria-checked="false">0.5&times;</button>
+            <button class="density-btn" data-constraint="SCALE:0.75" role="radio" aria-checked="false">0.75&times;</button>
+            <button class="density-btn" data-constraint="SCALE:1" role="radio" aria-checked="false">1&times;</button>
+            <button class="density-btn" data-constraint="SCALE:1.5" role="radio" aria-checked="false">1.5&times;</button>
+            <button class="density-btn" data-constraint="SCALE:2" role="radio" aria-checked="false">2&times;</button>
+            <button class="density-btn" data-constraint="SCALE:3" role="radio" aria-checked="false">3&times;</button>
+            <button class="density-btn" data-constraint="SCALE:4" role="radio" aria-checked="false">4&times;</button>
+            <button class="density-btn" data-constraint="WIDTH:512" role="radio" aria-checked="false">512w</button>
+            <button class="density-btn" data-constraint="HEIGHT:512" role="radio" aria-checked="false">512h</button>
+          </div>
+        </div>
+
+        <button class="button button--primary export-btn" id="exportBtn" data-i18n="ui.export_btn" data-i18n-aria="ui.export_aria"></button>
+      </div>
+    </div>
+
+    <div id="stepOptimize" style="display: none;">
+      <div class="optimize-success-icon" aria-hidden="true">&#10003;</div>
+      <h3 class="optimize-title" data-i18n="ui.optimize_title"></h3>
+      <p data-i18n="ui.optimize_text"></p>
+      <div class="opt-services-list" id="optServicesList"></div>
+      <button class="btn-modal-primary optimize-done-btn" id="closeOptimizeBtn" data-i18n="ui.optimize_got_it"></button>
+    </div>
+  </div>
+
+  <div class="overlay" id="warningOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal">
+      <div class="modal-icon warning" aria-hidden="true">&#9888;</div>
+      <h3 id="modalTitle" data-i18n="ui.warning_title"></h3>
+      <p id="warningDescription"></p>
+      <div class="format-hint-row">
+        <span class="format-hint current" id="currentFormatHint"></span>
+        <span class="arrow-separator" aria-hidden="true">&rarr;</span>
+        <span class="format-hint recommended" id="recommendedFormatHint"></span>
+      </div>
+      <div class="reasons" id="warningReasons"></div>
+      <div class="modal-actions">
+        <button class="btn-modal-secondary" id="continueExportBtn" data-i18n="ui.warning_continue"></button>
+        <button class="btn-modal-primary" id="changeFormatBtn" data-i18n="ui.warning_change"></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay" id="pngConfirmOverlay" role="dialog" aria-modal="true" aria-labelledby="pngConfirmTitle">
+    <div class="modal">
+      <div class="modal-icon confirm" aria-hidden="true">&#10067;</div>
+      <h3 id="pngConfirmTitle" data-i18n="ui.png_confirm_title"></h3>
+      <p data-i18n="ui.png_confirm_text1"></p>
+      <p><strong data-i18n="ui.png_confirm_text2"></strong></p>
+      <p style="color: var(--white4);" data-i18n="ui.png_confirm_text3"></p>
+      <div class="modal-actions">
+        <button class="btn-modal-secondary" id="confirmPngBtn" data-i18n="ui.png_confirm_btn"></button>
+        <button class="btn-modal-slight" id="switchToJpgBtn" data-i18n="ui.png_switch_jpg"></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>/*__JS__*/</script>
+</body>
+</html>

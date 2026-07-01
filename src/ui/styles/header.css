@@ -1,0 +1,32 @@
+.header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--size-xxsmall);
+}
+.header-actions {
+  display: flex;
+  gap: 2px;
+}
+.header-btn {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--border-radius-med);
+  cursor: pointer;
+  font-size: 14px;
+  padding: 0;
+  transition: all 100ms ease;
+  color: var(--color-text-secondary);
+}
+.header-btn:hover {
+  background: var(--color-bg-hover);
+  border-color: var(--color-border-primary);
+}
+.header-btn:active {
+  background: var(--color-bg-selected);
+}

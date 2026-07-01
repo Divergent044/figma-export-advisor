@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "es2020",
+    "lib": ["es2020"],
+    "strict": true,
+    "moduleResolution": "bundler",
+    "ignoreDeprecations": "6.0",
+    "esModuleInterop": true,
+    "rootDir": "src",
+    "outDir": "dist",
+    "types": ["@figma/plugin-typings"]
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["src/ui"]
+}
