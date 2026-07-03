@@ -15,7 +15,7 @@ export const CSS_ORDER = [
   'analysis-card.css',
   'export-btn.css',
   'format-density.css',
-  'modals.css',
+  'step-panel.css',
   'optimize.css',
   'toast.css',
 ];
@@ -46,7 +46,7 @@ export async function buildUI() {
   const jsResult = await build({
     entryPoints: [ENTRY],
     bundle: true,
-    target: ['es2020'],
+    target: ['es2022'],
     format: 'iife',
     write: false,
     minify: false,
@@ -55,8 +55,8 @@ export async function buildUI() {
   const js = jsResult.outputFiles[0].text;
 
   const html = readFileSync(TEMPLATE, 'utf8')
-    .replace('/*__CSS__*/', css)
-    .replace('/*__JS__*/', js);
+    .replace('/* @__CSS__ */', css)
+    .replace('/* @__JS__ */', js);
 
   writeFileSync(OUTPUT, html, 'utf8');
   console.log(`Built ${OUTPUT}`);

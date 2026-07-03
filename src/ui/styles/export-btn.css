@@ -1,6 +1,10 @@
 .export-btn {
   width: 100%;
-  margin-top: var(--size-xxsmall);
+  margin-top: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 .export-btn.loading {
   position: relative;

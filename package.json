@@ -4,18 +4,11 @@
   "description": "Figma plugin that analyzes layer content and recommends the optimal export format (SVG, PNG, JPG) based on vector/raster detection, transparency, shadows, blur, and masks.",
   "private": true,
   "license": "MIT",
-  "author": {
-    "email": "dev.divergent044@gmail.com"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Divergent044/figma-export-advisor"
-  },
   "type": "module",
   "main": "code.js",
   "scripts": {
-    "build": "esbuild src/code.ts --bundle --outfile=code.js --target=es2022 && node scripts/build-ui.mjs",
-    "build:code": "esbuild src/code.ts --bundle --outfile=code.js --target=es2022",
+    "build": "npm run build:code && npm run build:ui",
+    "build:code": "esbuild src/code.ts --bundle --outfile=code.js --target=es2022 --format=esm",
     "build:ui": "node scripts/build-ui.mjs",
     "typecheck": "tsc --noEmit && tsc --noEmit -p src/ui/tsconfig.json",
     "lint": "eslint .",
@@ -24,6 +17,11 @@
     "watch:code": "esbuild src/code.ts --bundle --outfile=code.js --target=es2022 --watch=forever",
     "watch:ui": "node scripts/watch-ui.mjs"
   },
+  "pre-commit": [
+    "lint",
+    "typecheck",
+    "build"
+  ],
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@figma/eslint-plugin-figma-plugins": "^1.0.0",
@@ -31,6 +29,7 @@
     "esbuild": "^0.28.1",
     "eslint": "^10.6.0",
     "figma-plugin-ds": "^1.0.1",
+    "pre-commit": "^2.0.0",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.62.0"
   }

@@ -1,5 +1,5 @@
 import { t, setLocale, localizeDOM, getLocale } from './i18n/translate';
-import { toastEl, exportBtn, optServicesList, warningDescription, currentFormatHint, recommendedFormatHint, warningReasons, formatGroup, densityGroup, continueExportBtn, changeFormatBtn, confirmPngBtn, switchToJpgBtn, closeOptimizeBtn, langToggleBtn, themeToggleBtn, stepsIndicator, stepExport, stepOptimize } from './dom';
+import { toastEl, exportBtn, optServicesList, warningDescription, currentFormatHint, recommendedFormatHint, warningReasons, formatGroup, densityGroup, continueExportBtn, changeFormatBtn, confirmPngBtn, switchToJpgBtn, closeOptimizeBtn, langToggleBtn, themeToggleBtn, backToExportBtn } from './dom';
 import {
   selectedFormat,
   selectedConstraint,
@@ -14,7 +14,7 @@ import {
   setThemeMode,
   type UINodeAnalysis,
 } from './state';
-import { openWarningModal, closeWarningModal, openPngConfirmModal, closePngConfirmModal } from './modal';
+import { setActiveStep, showWarningPanel, showPngConfirmPanel, hideReviewStep } from './step-controller';
 import { renderFormatButtons, renderDensityButtons, renderAnalysisCard, updateViewState, parseConstraint } from './render';
 import { OPT_SERVICES } from './optimize-services';
 
@@ -22,6 +22,8 @@ interface PluginMessage {
   type: string;
   [key: string]: unknown;
 }
+
+let lastExportFormat: string | null = null;
 
 export function postMessage(msg: PluginMessage): void {
   parent.postMessage({ pluginMessage: msg }, '*');
@@ -38,34 +40,19 @@ export function showToast(text: string, isError: boolean): void {
   }, 2500);
 }
 
+export function renderLangSwitch(): void {
+  langToggleBtn.querySelectorAll('.lang-opt').forEach((el) => {
+    el.classList.toggle('active', el.getAttribute('data-lang') === getLocale());
+  });
+}
+
 export function setExportLoading(loading: boolean): void {
   setIsExporting(loading);
   exportBtn.disabled = loading;
   exportBtn.classList.toggle('loading', loading);
 }
 
-function setActiveStep(step: 1 | 2): void {
-  const steps = stepsIndicator.querySelectorAll('.step');
-  steps.forEach((el) => {
-    const s = el.getAttribute('data-step');
-    el.classList.remove('active', 'completed');
-    if (s === String(step)) {
-      el.classList.add('active');
-    } else if (Number(s) < step) {
-      el.classList.add('completed');
-    }
-  });
-
-  if (step === 1) {
-    stepExport.style.display = '';
-    stepOptimize.style.display = 'none';
-  } else {
-    stepExport.style.display = 'none';
-    stepOptimize.style.display = '';
-  }
-}
-
-function showOptimizeStep(format: string): void {
+function renderOptServices(format: string): void {
   optServicesList.innerHTML = '';
   OPT_SERVICES.forEach((svc) => {
     const link = document.createElement('a');
@@ -106,8 +93,12 @@ function showOptimizeStep(format: string): void {
     link.appendChild(info);
     optServicesList.appendChild(link);
   });
+}
 
-  setActiveStep(2);
+function showOptimizeStep(format: string): void {
+  lastExportFormat = format;
+  renderOptServices(format);
+  setActiveStep(3);
   (closeOptimizeBtn as HTMLElement).focus();
 }
 
@@ -156,13 +147,13 @@ export function initEventHandlers(): void {
   });
 
   continueExportBtn.addEventListener('click', () => {
-    closeWarningModal();
+    hideReviewStep();
     setExportLoading(true);
     postMessage({ type: 'force-export', format: selectedFormat, constraint: selectedConstraint });
   });
 
   changeFormatBtn.addEventListener('click', () => {
-    closeWarningModal();
+    hideReviewStep();
     setExportLoading(false);
     setSelectedFormat(recommendedFormat);
     renderFormatButtons();
@@ -170,28 +161,38 @@ export function initEventHandlers(): void {
   });
 
   confirmPngBtn.addEventListener('click', () => {
-    closePngConfirmModal();
+    hideReviewStep();
     setExportLoading(true);
     postMessage({ type: 'confirm-png-export', format: selectedFormat, constraint: selectedConstraint });
   });
 
   switchToJpgBtn.addEventListener('click', () => {
-    closePngConfirmModal();
+    hideReviewStep();
     setExportLoading(false);
     setSelectedFormat('JPG');
     renderFormatButtons();
     showToast(t('ui.toast_format_changed').replace('{format}', 'JPG'), false);
   });
 
+  backToExportBtn.addEventListener('click', () => {
+    hideReviewStep();
+    setExportLoading(false);
+  });
+
   closeOptimizeBtn.addEventListener('click', () => {
     setActiveStep(1);
   });
 
-  langToggleBtn.addEventListener('click', () => {
-    const newLocale = getLocale() === 'ru' ? 'en' : 'ru';
+  langToggleBtn.addEventListener('click', (e) => {
+    const opt = (e.target as Element).closest('.lang-opt');
+    const newLocale = opt
+      ? opt.getAttribute('data-lang')!
+      : getLocale() === 'ru' ? 'en' : 'ru';
     setLocale(newLocale);
     localizeDOM();
+    renderLangSwitch();
     renderAnalysisCard();
+    if (lastExportFormat) renderOptServices(lastExportFormat);
     const langName = newLocale === 'ru' ? 'Русский' : 'English';
     showToast(t('ui.toast_lang_changed').replace('{lang}', langName), false);
   });
@@ -222,23 +223,20 @@ export function initMessageHandler(): void {
       case 'init': {
         setLocale((msg.locale as string) || 'en');
         localizeDOM();
+        renderLangSwitch();
         postMessage({ type: 'analyze' });
         break;
       }
 
       case 'no-selection': {
         setExportLoading(false);
-        closeWarningModal();
-        closePngConfirmModal();
-        setActiveStep(1);
+        hideReviewStep();
         updateViewState(false);
         break;
       }
 
       case 'analysis-result': {
-        closeWarningModal();
-        closePngConfirmModal();
-        setActiveStep(1);
+        hideReviewStep();
         setAnalyses(msg.analyses as UINodeAnalysis[]);
         setRecommendedFormat(msg.overallRecommended as string);
         updateViewState(true);
@@ -272,13 +270,13 @@ export function initMessageHandler(): void {
           });
         }
 
-        openWarningModal();
+        showWarningPanel();
         break;
       }
 
       case 'png-confirmation': {
         setExportLoading(false);
-        openPngConfirmModal();
+        showPngConfirmPanel();
         break;
       }
 

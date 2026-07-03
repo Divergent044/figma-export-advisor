@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <style>/*__CSS__*/</style>
+    <title>Figma Export Advisor</title>
+  <style>/* @__CSS__ */</style>
 </head>
 <body>
 
-  <div class="p-xxsmall" id="mainView">
+  <div class="p-xsmall" id="mainView">
     <div class="header-bar">
-      <div class="section-title" style="padding-left:0; margin:0;">Smart Export</div>
-      <div class="header-actions">
-        <button class="header-btn" id="langToggleBtn" aria-label="Switch language" data-i18n-aria="ui.lang_aria">&#127760;</button>
-        <button class="header-btn" id="themeToggleBtn" aria-label="Toggle theme" data-i18n-aria="ui.theme_aria">&#9790;</button>
+      <div class="lang-switch" id="langToggleBtn" role="switch" aria-label="Switch language" data-i18n-aria="ui.lang_aria">
+        <span class="lang-opt" data-lang="ru">RU</span>
+        <span class="lang-opt" data-lang="en">EN</span>
       </div>
+      <button class="header-btn" id="themeToggleBtn" aria-label="Toggle theme" data-i18n-aria="ui.theme_aria">&#9790;</button>
     </div>
 
     <div class="steps" id="stepsIndicator">
       <div class="step active" data-step="1"><span class="step-num">1</span><span class="step-label" data-i18n="ui.step_export"></span></div>
       <div class="step-line"></div>
-      <div class="step" data-step="2"><span class="step-num">2</span><span class="step-label" data-i18n="ui.step_optimize"></span></div>
+      <div class="step" data-step="2"><span class="step-num">2</span><span class="step-label" data-i18n="ui.step_review"></span></div>
+      <div class="step-line"></div>
+      <div class="step" data-step="3"><span class="step-num">3</span><span class="step-label" data-i18n="ui.step_optimize"></span></div>
     </div>
 
     <div id="stepExport">
@@ -58,49 +61,52 @@
       </div>
     </div>
 
+    <div id="stepReview" style="display: none;">
+      <button class="back-nav" id="backToExportBtn" type="button">
+        <span aria-hidden="true">&larr;</span>
+        <span data-i18n="ui.back"></span>
+      </button>
+
+      <div id="warningPanel" style="display:none;">
+        <div class="step-icon warning" aria-hidden="true">&#9888;</div>
+        <h3 class="step-title" data-i18n="ui.warning_title"></h3>
+        <p id="warningDescription"></p>
+        <div class="format-hint-row">
+          <span class="format-hint current" id="currentFormatHint"></span>
+          <span class="arrow-separator" aria-hidden="true">&rarr;</span>
+          <span class="format-hint recommended" id="recommendedFormatHint"></span>
+        </div>
+        <div class="reasons" id="warningReasons"></div>
+        <div class="modal-actions">
+          <button class="btn-modal-secondary" id="continueExportBtn" data-i18n="ui.warning_continue"></button>
+          <button class="btn-modal-primary" id="changeFormatBtn" data-i18n="ui.warning_change"></button>
+        </div>
+      </div>
+
+      <div id="pngConfirmPanel" style="display:none;">
+        <div class="step-icon confirm" aria-hidden="true">&#10067;</div>
+        <h3 class="step-title" data-i18n="ui.png_confirm_title"></h3>
+        <p data-i18n="ui.png_confirm_text1"></p>
+        <p><strong data-i18n="ui.png_confirm_text2"></strong></p>
+        <p style="color: var(--white4);" data-i18n="ui.png_confirm_text3"></p>
+        <div class="modal-actions">
+          <button class="btn-modal-secondary" id="confirmPngBtn" data-i18n="ui.png_confirm_btn"></button>
+          <button class="btn-modal-primary" id="switchToJpgBtn" data-i18n="ui.png_switch_jpg"></button>
+        </div>
+      </div>
+    </div>
+
     <div id="stepOptimize" style="display: none;">
-      <div class="optimize-success-icon" aria-hidden="true">&#10003;</div>
-      <h3 class="optimize-title" data-i18n="ui.optimize_title"></h3>
+      <div class="step-icon success" aria-hidden="true">&#10003;</div>
+      <h3 class="step-title" data-i18n="ui.optimize_title"></h3>
       <p data-i18n="ui.optimize_text"></p>
       <div class="opt-services-list" id="optServicesList"></div>
       <button class="btn-modal-primary optimize-done-btn" id="closeOptimizeBtn" data-i18n="ui.optimize_got_it"></button>
     </div>
   </div>
 
-  <div class="overlay" id="warningOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <div class="modal">
-      <div class="modal-icon warning" aria-hidden="true">&#9888;</div>
-      <h3 id="modalTitle" data-i18n="ui.warning_title"></h3>
-      <p id="warningDescription"></p>
-      <div class="format-hint-row">
-        <span class="format-hint current" id="currentFormatHint"></span>
-        <span class="arrow-separator" aria-hidden="true">&rarr;</span>
-        <span class="format-hint recommended" id="recommendedFormatHint"></span>
-      </div>
-      <div class="reasons" id="warningReasons"></div>
-      <div class="modal-actions">
-        <button class="btn-modal-secondary" id="continueExportBtn" data-i18n="ui.warning_continue"></button>
-        <button class="btn-modal-primary" id="changeFormatBtn" data-i18n="ui.warning_change"></button>
-      </div>
-    </div>
-  </div>
-
-  <div class="overlay" id="pngConfirmOverlay" role="dialog" aria-modal="true" aria-labelledby="pngConfirmTitle">
-    <div class="modal">
-      <div class="modal-icon confirm" aria-hidden="true">&#10067;</div>
-      <h3 id="pngConfirmTitle" data-i18n="ui.png_confirm_title"></h3>
-      <p data-i18n="ui.png_confirm_text1"></p>
-      <p><strong data-i18n="ui.png_confirm_text2"></strong></p>
-      <p style="color: var(--white4);" data-i18n="ui.png_confirm_text3"></p>
-      <div class="modal-actions">
-        <button class="btn-modal-secondary" id="confirmPngBtn" data-i18n="ui.png_confirm_btn"></button>
-        <button class="btn-modal-slight" id="switchToJpgBtn" data-i18n="ui.png_switch_jpg"></button>
-      </div>
-    </div>
-  </div>
-
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <script>/*__JS__*/</script>
+  <script>/* @__JS__ */</script>
 </body>
 </html>

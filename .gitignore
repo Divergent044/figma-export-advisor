@@ -3,11 +3,25 @@
 *.log.*
 node_modules
 
+# generated folders
 out/
 dist/
 code.js
 ui.html
 
+# IDE
 .idea
 .skills
+.sandbox
+.DS_Store
+.vscode
+
+# logs
+npm-debug.log
+yarn-error.log
+
+# ts-declarations
+*.d.ts
+*.d.ts.map
+tsconfig.tsbuildinfo
 

@@ -111,5 +111,6 @@ export function getOverallRecommendedFormat(analyses: NodeAnalysis[]): ExportFor
  */
 export function needsPngConfirmation(format: ExportFormat, analyses: NodeAnalysis[]): boolean {
   if (format !== 'PNG') return false;
+
   return analyses.some((a) => a.hasImageFill && !a.hasTransparency && !a.isVector);
 }

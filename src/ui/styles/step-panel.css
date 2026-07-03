@@ -1,65 +1,52 @@
-.overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: var(--color-overlay);
-  z-index: 100;
-  align-items: center;
-  justify-content: center;
-}
-.overlay.visible { display: flex; }
-
-.modal {
-  background: var(--color-bg-secondary);
-  border: 1px solid var(--color-border-strong);
-  border-radius: var(--border-radius-large);
-  padding: 16px;
-  width: 288px;
-  max-width: calc(100vw - 32px);
-  box-shadow: var(--shadow-floating-window);
-  color: var(--color-text-primary);
-}
-.modal-icon {
-  width: 32px;
-  height: 32px;
+.step-icon {
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 10px;
-  font-size: 16px;
+  font-size: 20px;
+  margin: 10px auto;
 }
-.modal-icon.warning {
+.step-icon.warning {
   background: rgba(255, 159, 67, 0.15);
   border: 1px solid rgba(255, 159, 67, 0.4);
+  color: #ff9f43;
 }
-.modal-icon.confirm {
+.step-icon.confirm {
   background: rgba(24, 160, 251, 0.15);
   border: 1px solid rgba(24, 160, 251, 0.4);
+  color: var(--blue);
 }
-.modal-icon.info {
-  background: rgba(24, 160, 251, 0.15);
-  border: 1px solid rgba(24, 160, 251, 0.4);
+.step-icon.success {
+  background: rgba(27, 196, 125, 0.15);
+  border: 1px solid rgba(27, 196, 125, 0.4);
+  color: var(--green);
 }
-.modal h3 {
+
+.step-title {
   font-size: var(--font-size-large);
   font-weight: var(--font-weight-bold);
   color: var(--color-text-primary);
   margin: 0 0 8px 0;
+  text-align: center;
 }
-.modal p {
+
+#stepReview p,
+#stepOptimize p {
   font-size: var(--font-size-xsmall);
   color: var(--color-text-secondary);
   line-height: 1.5;
   margin: 0 0 6px 0;
 }
 
-.modal .format-hint-row {
+#stepReview .format-hint-row {
   display: flex;
   gap: 6px;
   flex-wrap: wrap;
+  margin-top: 8px;
 }
-.modal .format-hint {
+#stepReview .format-hint {
   display: inline-flex;
   align-items: center;
   gap: 4px;
@@ -68,44 +55,60 @@
   padding: 3px 8px;
   border-radius: var(--border-radius-small);
 }
-.modal .format-hint.current {
+#stepReview .format-hint.current {
   background: rgba(255, 159, 67, 0.15);
   color: #ff9f43;
   border: 1px solid rgba(255, 159, 67, 0.4);
 }
-.modal .format-hint.recommended {
+#stepReview .format-hint.recommended {
   background: rgba(27, 196, 125, 0.15);
   color: var(--green);
   border: 1px solid rgba(27, 196, 125, 0.4);
 }
-.modal .arrow-separator {
+#stepReview .arrow-separator {
   color: var(--color-text-tertiary);
   font-size: var(--font-size-xsmall);
   display: flex;
   align-items: center;
 }
 
-.modal .reasons {
+#stepReview .reasons {
   margin-top: 6px;
   margin-bottom: 12px;
 }
-.modal .reason-item {
+#stepReview .reason-item {
   font-size: 10px;
   color: var(--color-text-secondary);
   padding: 2px 0 2px 12px;
   position: relative;
 }
-.modal .reason-item::before {
+#stepReview .reason-item::before {
   content: '\2022';
   position: absolute;
   left: 2px;
   color: #ff9f43;
 }
+
 .modal-actions {
   display: flex;
   gap: var(--size-xxsmall);
-  margin-top: 12px;
+  margin-top: 18px;
 }
+
+.btn-modal-primary {
+  flex: 1;
+  padding: 7px 12px;
+  font-family: var(--font-stack);
+  font-size: var(--font-size-xsmall);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-onbrand);
+  background: var(--blue);
+  border: 1px solid var(--blue);
+  border-radius: var(--border-radius-large);
+  cursor: pointer;
+  transition: all 100ms ease;
+}
+.btn-modal-primary:hover { background: #1a8cff; }
 
 .btn-modal-secondary {
   flex: 1;
@@ -123,35 +126,4 @@
 .btn-modal-secondary:hover {
   background: var(--color-bg-hover);
   color: var(--color-text-primary);
-}
-.btn-modal-primary {
-  flex: 1;
-  padding: 7px 12px;
-  font-family: var(--font-stack);
-  font-size: var(--font-size-xsmall);
-  font-weight: var(--font-weight-bold);
-  color: var(--color-text-onbrand);
-  background: var(--blue);
-  border: 1px solid var(--blue);
-  border-radius: var(--border-radius-large);
-  cursor: pointer;
-  transition: all 100ms ease;
-}
-.btn-modal-primary:hover { background: #1a8cff; }
-.btn-modal-slight {
-  flex: 1;
-  padding: 7px 12px;
-  font-family: var(--font-stack);
-  font-size: var(--font-size-xsmall);
-  font-weight: var(--font-weight-medium);
-  color: var(--color-text-primary);
-  background: var(--color-bg-hover);
-  border: 1px solid var(--color-border-primary);
-  border-radius: var(--border-radius-large);
-  cursor: pointer;
-  transition: all 100ms ease;
-}
-.btn-modal-slight:hover {
-  background: var(--color-bg-selected);
-  border-color: var(--color-border-strong);
 }

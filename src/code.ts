@@ -18,7 +18,7 @@ import { performExport } from './export/exporter';
 // Инициализация UI
 // ============================================================================
 
-figma.showUI(__html__, { width: 320, height: 460, themeColors: true });
+figma.showUI(__html__, { width: 350, height: 500, themeColors: true });
 
 function detectLocale(): string {
   const user = figma.currentUser as (typeof figma.currentUser & { locale?: string }) | null;

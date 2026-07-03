@@ -22,7 +22,6 @@
   --color-icon-primary: var(--figma-color-icon);
   --color-icon-secondary: var(--figma-color-icon-secondary);
 
-  --color-overlay: var(--figma-color-overlay);
   --color-disabled: var(--figma-color-disabled);
   --color-focus: var(--figma-color-focus);
 
@@ -66,7 +65,6 @@
   --figma-color-icon: #333333;
   --figma-color-icon-secondary: #757575;
 
-  --figma-color-overlay: rgba(0, 0, 0, 0.3);
   --figma-color-disabled: #c0c0c0;
   --figma-color-focus: #18a0fb;
 }
@@ -95,7 +93,6 @@
   --figma-color-icon: #e0e0e0;
   --figma-color-icon-secondary: #a0a0a0;
 
-  --figma-color-overlay: rgba(0, 0, 0, 0.5);
   --figma-color-disabled: #555555;
   --figma-color-focus: #18a0fb;
 }
