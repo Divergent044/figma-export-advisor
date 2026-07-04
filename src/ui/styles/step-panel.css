@@ -7,8 +7,7 @@
   justify-content: center;
   font-size: 20px;
   margin: 10px auto;
-}
-.step-icon.warning {
+}.step-icon.warning {
   background: rgba(255, 159, 67, 0.15);
   border: 1px solid rgba(255, 159, 67, 0.4);
   color: #ff9f43;
@@ -125,5 +124,24 @@
 }
 .btn-modal-secondary:hover {
   background: var(--color-bg-hover);
+  color: var(--color-text-primary);
+}
+
+.back-nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: none;
+  padding: 0 0 8px 0;
+  margin: 0;
+  font-family: var(--font-stack);
+  font-size: var(--font-size-xsmall);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: color 100ms ease;
+}
+.back-nav:hover {
   color: var(--color-text-primary);
 }

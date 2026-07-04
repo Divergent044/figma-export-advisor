@@ -8,9 +8,9 @@
 
   <div class="p-xsmall" id="mainView">
     <div class="header-bar">
-      <div class="lang-switch" id="langToggleBtn" role="switch" aria-label="Switch language" data-i18n-aria="ui.lang_aria">
-        <span class="lang-opt" data-lang="ru">RU</span>
-        <span class="lang-opt" data-lang="en">EN</span>
+      <div class="lang-switch" id="langToggleBtn" role="group" aria-label="Language">
+        <button class="lang-opt" type="button" data-lang="ru">RU</button>
+        <button class="lang-opt" type="button" data-lang="en">EN</button>
       </div>
       <button class="header-btn" id="themeToggleBtn" aria-label="Toggle theme" data-i18n-aria="ui.theme_aria">&#9790;</button>
     </div>
@@ -88,7 +88,7 @@
         <h3 class="step-title" data-i18n="ui.png_confirm_title"></h3>
         <p data-i18n="ui.png_confirm_text1"></p>
         <p><strong data-i18n="ui.png_confirm_text2"></strong></p>
-        <p style="color: var(--white4);" data-i18n="ui.png_confirm_text3"></p>
+        <p style="color: var(--color-text-tertiary);" data-i18n="ui.png_confirm_text3"></p>
         <div class="modal-actions">
           <button class="btn-modal-secondary" id="confirmPngBtn" data-i18n="ui.png_confirm_btn"></button>
           <button class="btn-modal-primary" id="switchToJpgBtn" data-i18n="ui.png_switch_jpg"></button>

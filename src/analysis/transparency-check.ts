@@ -89,7 +89,7 @@ function checkEffectsTransparency(node: SceneNode): string[] {
   if (!effects) return reasons;
 
   for (const effect of effects) {
-    if (effect.visible === false) continue;
+    if (!effect.visible) continue;
 
     switch (effect.type) {
       case 'DROP_SHADOW':

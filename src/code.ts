@@ -1,5 +1,5 @@
 // ============================================================================
-// Smart Export Image Plugin — точка входа
+// Export Advisor Plugin — точка входа
 // Оркестратор: связывает анализ, валидацию, экспорт и UI
 // ============================================================================
 
@@ -12,7 +12,7 @@ import {
   getOverallRecommendedFormat,
   needsPngConfirmation,
 } from './validation/validator';
-import { performExport } from './export/exporter';
+import { performExport, setExporterLocale } from './export/exporter';
 
 // ============================================================================
 // Инициализация UI
@@ -28,7 +28,9 @@ function detectLocale(): string {
   return 'en';
 }
 
-figma.ui.postMessage({ type: 'init', locale: detectLocale() });
+const locale = detectLocale();
+setExporterLocale(locale);
+figma.ui.postMessage({ type: 'init', locale });
 
 // ============================================================================
 // Анализ текущего выделения

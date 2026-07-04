@@ -18,11 +18,14 @@
   justify-content: center;
   height: 100%;
   padding: 0 8px;
+  font-family: var(--font-stack);
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.02em;
   color: var(--color-text-secondary);
   background: transparent;
+  border: none;
+  cursor: pointer;
   transition: background 100ms ease, color 100ms ease;
   user-select: none;
 }

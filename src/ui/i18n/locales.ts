@@ -1,7 +1,5 @@
 export const LOCALES: Record<string, Record<string, string>> = {
   en: {
-    'ui.lang_aria': 'Switch language',
-    'ui.theme_aria': 'Toggle theme',
     'ui.toast_lang_changed': 'Language: {lang}',
     'ui.toast_theme_changed': 'Theme: {theme}',
     'ui.back': 'Back',
@@ -60,8 +58,6 @@ export const LOCALES: Record<string, Record<string, string>> = {
     'desc.generic_mismatch': 'The selected format is not optimal for this content.',
   },
   ru: {
-    'ui.lang_aria': 'Переключить язык',
-    'ui.theme_aria': 'Переключить тему',
     'ui.toast_lang_changed': 'Язык: {lang}',
     'ui.toast_theme_changed': 'Тема: {theme}',
     'ui.back': 'Назад',

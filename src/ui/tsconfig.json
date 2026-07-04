@@ -6,9 +6,9 @@
     "moduleResolution": "bundler",
     "ignoreDeprecations": "6.0",
     "esModuleInterop": true,
-    "rootDir": ".",
+    "rootDir": "..",
     "outDir": "../../dist/ui",
     "types": []
   },
-  "include": ["./*.ts", "./i18n/*.ts"]
+  "include": ["./**/*.ts", "../shared/format-allowed.ts", "../shared/types.ts"]
 }

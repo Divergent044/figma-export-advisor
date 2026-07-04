@@ -22,7 +22,7 @@ export default tsESLint.config(
     },
   },
   {
-    ignores: ['code.js', 'ui.html', 'deprecated-template-code.js', 'dist', 'eslint.config.js'],
+    ignores: ['code.js', 'ui.html', 'dist', 'eslint.config.js'],
   },
   {
     files: ['scripts/**/*.mjs'],

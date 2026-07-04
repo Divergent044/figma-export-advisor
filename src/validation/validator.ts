@@ -5,6 +5,7 @@
 // ============================================================================
 
 import type { ExportFormat, NodeAnalysis } from '../shared/types';
+import { isFormatAllowed } from '../shared/format-allowed';
 import {
   DESC_MIXED_CONTENT_SVG,
   DESC_MIXED_CONTENT_JPG,
@@ -25,22 +26,10 @@ import {
 /**
  * Проверяет, является ли выбранный формат допустимым
  * для данного результата анализа.
- * - Вектор → только SVG
- * - Растр + обнаруженная прозрачность → только PNG
- * - Растр + IMAGE fill (альфа неизвестна) → PNG рекомендуется, JPG допустим
- * - Растр без прозрачности и IMAGE → только JPG
+ * Делегирует в общий isFormatAllowed (shared/format-allowed.ts).
  */
 export function isFormatAcceptable(format: ExportFormat, analysis: NodeAnalysis): boolean {
-  if (analysis.isVector) {
-    return format === 'SVG';
-  }
-  if (analysis.hasTransparency) {
-    return format === 'PNG';
-  }
-  if (analysis.hasImageFill) {
-    return format === 'PNG' || format === 'JPG';
-  }
-  return format === 'JPG';
+  return isFormatAllowed(analysis, format);
 }
 
 // ============================================================================

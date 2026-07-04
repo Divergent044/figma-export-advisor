@@ -17,6 +17,7 @@ import {
 import { setActiveStep, showWarningPanel, showPngConfirmPanel, hideReviewStep } from './step-controller';
 import { renderFormatButtons, renderDensityButtons, renderAnalysisCard, updateViewState, parseConstraint } from './render';
 import { OPT_SERVICES } from './optimize-services';
+import { isFormatAllowed } from '../shared/format-allowed';
 
 interface PluginMessage {
   type: string;
@@ -185,9 +186,9 @@ export function initEventHandlers(): void {
 
   langToggleBtn.addEventListener('click', (e) => {
     const opt = (e.target as Element).closest('.lang-opt');
-    const newLocale = opt
-      ? opt.getAttribute('data-lang')!
-      : getLocale() === 'ru' ? 'en' : 'ru';
+    if (!opt) return;
+    const newLocale = opt.getAttribute('data-lang')!;
+    if (newLocale === getLocale()) return;
     setLocale(newLocale);
     localizeDOM();
     renderLangSwitch();
@@ -208,10 +209,8 @@ export function initEventHandlers(): void {
   });
 }
 
-function isFormatAllowed(analysis: UINodeAnalysis, fmt: string): boolean {
-  if (analysis.isVector) return fmt === 'SVG';
-  if (analysis.hasTransparency) return fmt === 'PNG';
-  return fmt === 'JPG';
+function isFormatAllowedForSelection(analyses: UINodeAnalysis[], fmt: string): boolean {
+  return analyses.some((a) => isFormatAllowed(a, fmt as 'SVG' | 'PNG' | 'JPG'));
 }
 
 export function initMessageHandler(): void {
@@ -242,7 +241,7 @@ export function initMessageHandler(): void {
         updateViewState(true);
         renderAnalysisCard();
         const analysesArr = msg.analyses as UINodeAnalysis[];
-        const currentFormatAllowed = analysesArr.some((a) => isFormatAllowed(a, selectedFormat));
+        const currentFormatAllowed = isFormatAllowedForSelection(analysesArr, selectedFormat);
         if (!currentFormatAllowed) {
           setSelectedFormat(msg.overallRecommended as string);
         }
@@ -288,6 +287,10 @@ export function initMessageHandler(): void {
         a.download = msg.filename as string;
         a.click();
         URL.revokeObjectURL(url);
+        break;
+      }
+
+      case 'export-complete': {
         setExportLoading(false);
         showOptimizeStep(msg.format as string);
         break;

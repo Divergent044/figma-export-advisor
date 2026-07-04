@@ -13,16 +13,19 @@
     "typecheck": "tsc --noEmit && tsc --noEmit -p src/ui/tsconfig.json",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
+    "lint:biome": "biome lint .",
     "watch": "npm run watch:code & npm run watch:ui",
     "watch:code": "esbuild src/code.ts --bundle --outfile=code.js --target=es2022 --watch=forever",
     "watch:ui": "node scripts/watch-ui.mjs"
   },
   "pre-commit": [
     "lint",
+    "lint:biome",
     "typecheck",
     "build"
   ],
   "devDependencies": {
+    "@biomejs/biome": "2.5.2",
     "@eslint/js": "^10.0.1",
     "@figma/eslint-plugin-figma-plugins": "^1.0.0",
     "@figma/plugin-typings": "^1.130.0",

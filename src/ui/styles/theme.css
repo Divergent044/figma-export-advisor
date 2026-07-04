@@ -25,20 +25,7 @@
   --color-disabled: var(--figma-color-disabled);
   --color-focus: var(--figma-color-focus);
 
-  --white: var(--figma-color-bg);
-  --white8: var(--figma-color-text-secondary);
-  --white4: var(--figma-color-text-tertiary);
-  --black8: var(--figma-color-text);
   --black3: var(--figma-color-text-secondary);
-  --black3-opaque: var(--figma-color-text-secondary);
-  --grey: var(--figma-color-bg-tertiary);
-  --silver: var(--figma-color-border);
-  --hud: var(--figma-color-bg-secondary);
-  --toolbar: var(--figma-color-bg-secondary);
-  --hover-fill: var(--figma-color-bg-hover);
-  --black1: var(--figma-color-border);
-  --selection-a: var(--figma-color-bg-selected);
-  --selection-b: var(--figma-color-bg-selected);
 }
 
 [data-theme="light"] {
