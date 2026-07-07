@@ -21,7 +21,6 @@ npm-debug.log
 yarn-error.log
 
 # ts-declarations
-*.d.ts
 *.d.ts.map
 tsconfig.tsbuildinfo
 
