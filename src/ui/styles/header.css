@@ -1,60 +1,62 @@
 .header-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 }
 .lang-switch {
-  display: inline-flex;
-  height: 28px;
-  border: 1px solid var(--color-border-primary);
-  border-radius: var(--border-radius-med);
-  overflow: hidden;
-  cursor: pointer;
-  align-items: center;
+	display: inline-flex;
+	height: 28px;
+	border: 1px solid var(--color-border-primary);
+	border-radius: var(--border-radius-med);
+	overflow: hidden;
+	cursor: pointer;
+	align-items: center;
 }
 .lang-opt {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  padding: 0 8px;
-  font-family: var(--font-stack);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  color: var(--color-text-secondary);
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  transition: background 100ms ease, color 100ms ease;
-  user-select: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	padding: 0 8px;
+	font-family: var(--font-stack);
+	font-size: 11px;
+	font-weight: 600;
+	letter-spacing: 0.02em;
+	color: var(--color-text-secondary);
+	background: transparent;
+	border: none;
+	cursor: pointer;
+	transition:
+		background 100ms ease,
+		color 100ms ease;
+	user-select: none;
 }
 .lang-opt:hover {
-  background: var(--color-bg-hover);
+	background: var(--color-bg-hover);
 }
 .lang-opt.active {
-  background: var(--color-bg-selected);
-  color: var(--color-text-primary);
+	background: var(--color-bg-selected);
+	color: var(--color-text-primary);
 }
 .header-btn {
-  width: 28px;
-  height: 28px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: transparent;
-  border: 1px solid transparent;
-  border-radius: var(--border-radius-med);
-  cursor: pointer;
-  font-size: 14px;
-  padding: 0;
-  transition: all 100ms ease;
-  color: var(--color-text-secondary);
+	width: 28px;
+	height: 28px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: transparent;
+	border: 1px solid transparent;
+	border-radius: var(--border-radius-med);
+	cursor: pointer;
+	font-size: 14px;
+	padding: 0;
+	transition: all 100ms ease;
+	color: var(--color-text-secondary);
 }
 .header-btn:hover {
-  background: var(--color-bg-hover);
-  border-color: var(--color-border-primary);
+	background: var(--color-bg-hover);
+	border-color: var(--color-border-primary);
 }
 .header-btn:active {
-  background: var(--color-bg-selected);
+	background: var(--color-bg-selected);
 }

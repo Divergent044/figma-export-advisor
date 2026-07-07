@@ -1,19 +1,15 @@
 {
-  "name": "Export Advisor",
-  "id": "1654281253715754868",
-  "api": "1.0.0",
-  "main": "code.js",
-  "ui": "ui.html",
-  "capabilities": [],
-  "permissions": ["currentuser"],
-  "enableProposedApi": false,
-  "documentAccess": "dynamic-page",
-  "editorType": [
-    "figma"
-  ],
-  "networkAccess": {
-    "allowedDomains": [
-      "none"
-    ]
-  }
+	"name": "Export Advisor",
+	"id": "1654281253715754868",
+	"api": "1.0.0",
+	"main": "code.js",
+	"ui": "ui.html",
+	"capabilities": [],
+	"permissions": ["currentuser"],
+	"enableProposedApi": false,
+	"documentAccess": "dynamic-page",
+	"editorType": ["figma"],
+	"networkAccess": {
+		"allowedDomains": ["none"]
+	}
 }

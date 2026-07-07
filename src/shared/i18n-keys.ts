@@ -26,6 +26,8 @@ export const DESC_VECTOR_NOT_SVG = 'desc.vector_not_svg';
 export const DESC_RASTER_TRANSPARENCY_JPG = 'desc.raster_transparency_jpg';
 export const DESC_RASTER_TRANSPARENCY_SVG = 'desc.raster_transparency_svg';
 export const DESC_RASTER_IMAGE_SVG = 'desc.raster_image_svg';
-export const DESC_RASTER_NO_TRANSPARENCY_PNG = 'desc.raster_no_transparency_png';
-export const DESC_RASTER_NO_TRANSPARENCY_SVG = 'desc.raster_no_transparency_svg';
+export const DESC_RASTER_NO_TRANSPARENCY_PNG =
+	'desc.raster_no_transparency_png';
+export const DESC_RASTER_NO_TRANSPARENCY_SVG =
+	'desc.raster_no_transparency_svg';
 export const DESC_GENERIC_MISMATCH = 'desc.generic_mismatch';

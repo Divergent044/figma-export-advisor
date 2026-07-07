@@ -4,7 +4,10 @@
 // ============================================================================
 
 import type { ExportFormat, NodeAnalysis } from '../shared/types';
-import { isVectorContentRecursive, hasVisibleImageFill } from './vector-content';
+import {
+	isVectorContentRecursive,
+	hasVisibleImageFill,
+} from './vector-content';
 import { checkTransparencyOrEffects } from './transparency-check';
 
 /**
@@ -14,11 +17,11 @@ import { checkTransparencyOrEffects } from './transparency-check';
  * по природе Figma API — runtime guard избыточен.
  */
 const RASTER_NODE_TYPES: ReadonlySet<string> = new Set([
-  'VIDEO',
-  'STICKY',
-  'WIDGET',
-  'EMBED',
-  'LINK_UNFURL',
+	'VIDEO',
+	'STICKY',
+	'WIDGET',
+	'EMBED',
+	'LINK_UNFURL',
 ]);
 
 /**
@@ -26,23 +29,23 @@ const RASTER_NODE_TYPES: ReadonlySet<string> = new Set([
  * (альфа-канал неизвестен).
  */
 function isRasterNodeWithUnknownAlpha(node: SceneNode): boolean {
-  return RASTER_NODE_TYPES.has(node.type);
+	return RASTER_NODE_TYPES.has(node.type);
 }
 
 /**
  * Рекурсивно проверяет, содержит ли поддерево узла IMAGE заливку.
  */
 function hasImageFillRecursive(node: SceneNode): boolean {
-  if (hasVisibleImageFill(node)) return true;
+	if (hasVisibleImageFill(node)) return true;
 
-  if ('children' in node) {
-    const children = (node as ChildrenMixin).children;
-    if (children) {
-      return children.some((child) => hasImageFillRecursive(child));
-    }
-  }
+	if ('children' in node) {
+		const children = (node as ChildrenMixin).children;
+		if (children) {
+			return children.some((child) => hasImageFillRecursive(child));
+		}
+	}
 
-  return false;
+	return false;
 }
 
 /**
@@ -50,26 +53,27 @@ function hasImageFillRecursive(node: SceneNode): boolean {
  * наличие прозрачности/эффектов и рекомендуемый формат экспорта.
  */
 export function analyzeNode(node: SceneNode): NodeAnalysis {
-  const isVector = isVectorContentRecursive(node);
-  const { has: hasTransparency, reasons } = checkTransparencyOrEffects(node);
-  const hasImageFill = hasImageFillRecursive(node) || isRasterNodeWithUnknownAlpha(node);
+	const isVector = isVectorContentRecursive(node);
+	const { has: hasTransparency, reasons } = checkTransparencyOrEffects(node);
+	const hasImageFill =
+		hasImageFillRecursive(node) || isRasterNodeWithUnknownAlpha(node);
 
-  let recommendedFormat: ExportFormat;
-  if (isVector) {
-    recommendedFormat = 'SVG';
-  } else if (hasTransparency || hasImageFill) {
-    recommendedFormat = 'PNG';
-  } else {
-    recommendedFormat = 'JPG';
-  }
+	let recommendedFormat: ExportFormat;
+	if (isVector) {
+		recommendedFormat = 'SVG';
+	} else if (hasTransparency || hasImageFill) {
+		recommendedFormat = 'PNG';
+	} else {
+		recommendedFormat = 'JPG';
+	}
 
-  return {
-    isVector,
-    hasTransparency,
-    hasImageFill,
-    recommendedFormat,
-    reasons,
-    nodeName: node.name,
-    nodeType: node.type,
-  };
+	return {
+		isVector,
+		hasTransparency,
+		hasImageFill,
+		recommendedFormat,
+		reasons,
+		nodeName: node.name,
+		nodeType: node.type,
+	};
 }

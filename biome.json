@@ -86,17 +86,9 @@
 				"useNamespaceKeyword": "error"
 			}
 		},
-		"includes": [
-			"**",
-			"!code.js",
-			"!ui.html",
-			"!deprecated-template-code.js",
-			"!dist",
-			"!eslint.config.js",
-			"!biome.json"
-		]
+		"includes": ["**", "!code.js", "!ui.html", "!dist", "!biome.json"]
 	},
-	"javascript": { "formatter": { "quoteStyle": "double" }, "globals": [] },
+	"javascript": { "formatter": { "quoteStyle": "single" }, "globals": [] },
 	"overrides": [
 		{
 			"includes": ["**/*.ts", "**/*.tsx", "**/*.mts", "**/*.cts"],
@@ -128,12 +120,6 @@
 						"useGetterReturn": "off"
 					}
 				}
-			}
-		},
-		{
-			"includes": ["scripts/**/*.mjs"],
-			"linter": {
-				"rules": { "correctness": { "noUndeclaredVariables": "off" } }
 			}
 		}
 	],

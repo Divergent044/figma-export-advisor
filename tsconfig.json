@@ -1,15 +1,14 @@
 {
-  "compilerOptions": {
-    "target": "es2022",
-    "lib": ["es2022"],
-    "strict": true,
-    "moduleResolution": "bundler",
-    "ignoreDeprecations": "6.0",
-    "esModuleInterop": true,
-    "rootDir": "src",
-    "outDir": "dist",
-    "types": ["@figma/plugin-typings"]
-  },
-  "include": ["src/**/*.ts"],
-  "exclude": ["src/ui"]
+	"compilerOptions": {
+		"target": "es2022",
+		"lib": ["es2022", "dom"],
+		"strict": true,
+		"moduleResolution": "bundler",
+		"ignoreDeprecations": "6.0",
+		"esModuleInterop": true,
+		"skipLibCheck": true,
+		"noEmit": true,
+		"types": ["@figma/plugin-typings", "node"]
+	},
+	"include": ["src/**/*.ts", "rsbuild.config.ts", "rsbuild/**/*.ts"]
 }

@@ -1,1 +1,3 @@
-.p-xsmall { padding: var(--size-xsmall); }
+.p-xsmall {
+	padding: var(--size-xsmall);
+}

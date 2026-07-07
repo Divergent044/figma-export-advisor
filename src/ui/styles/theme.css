@@ -1,90 +1,90 @@
 :root {
-  color-scheme: light dark;
+	color-scheme: light dark;
 
-  --color-bg-primary: var(--figma-color-bg);
-  --color-bg-secondary: var(--figma-color-bg-secondary);
-  --color-bg-tertiary: var(--figma-color-bg-tertiary);
-  --color-bg-hover: var(--figma-color-bg-hover);
-  --color-bg-selected: var(--figma-color-bg-selected);
-  --color-bg-brand: var(--figma-color-bg-brand);
+	--color-bg-primary: var(--figma-color-bg);
+	--color-bg-secondary: var(--figma-color-bg-secondary);
+	--color-bg-tertiary: var(--figma-color-bg-tertiary);
+	--color-bg-hover: var(--figma-color-bg-hover);
+	--color-bg-selected: var(--figma-color-bg-selected);
+	--color-bg-brand: var(--figma-color-bg-brand);
 
-  --color-text-primary: var(--figma-color-text);
-  --color-text-secondary: var(--figma-color-text-secondary);
-  --color-text-tertiary: var(--figma-color-text-tertiary);
-  --color-text-onbrand: var(--figma-color-text-onbrand);
-  --color-text-danger: var(--figma-color-text-danger);
+	--color-text-primary: var(--figma-color-text);
+	--color-text-secondary: var(--figma-color-text-secondary);
+	--color-text-tertiary: var(--figma-color-text-tertiary);
+	--color-text-onbrand: var(--figma-color-text-onbrand);
+	--color-text-danger: var(--figma-color-text-danger);
 
-  --color-border-primary: var(--figma-color-border);
-  --color-border-strong: var(--figma-color-border-strong);
-  --color-border-brand: var(--figma-color-border-brand);
-  --color-border-focused: var(--figma-color-border-focused);
+	--color-border-primary: var(--figma-color-border);
+	--color-border-strong: var(--figma-color-border-strong);
+	--color-border-brand: var(--figma-color-border-brand);
+	--color-border-focused: var(--figma-color-border-focused);
 
-  --color-icon-primary: var(--figma-color-icon);
-  --color-icon-secondary: var(--figma-color-icon-secondary);
+	--color-icon-primary: var(--figma-color-icon);
+	--color-icon-secondary: var(--figma-color-icon-secondary);
 
-  --color-disabled: var(--figma-color-disabled);
-  --color-focus: var(--figma-color-focus);
+	--color-disabled: var(--figma-color-disabled);
+	--color-focus: var(--figma-color-focus);
 
-  --black3: var(--figma-color-text-secondary);
+	--black3: var(--figma-color-text-secondary);
 }
 
 [data-theme="light"] {
-  color-scheme: light;
+	color-scheme: light;
 
-  --figma-color-bg: #ffffff;
-  --figma-color-bg-secondary: #f5f5f5;
-  --figma-color-bg-tertiary: #eeeeee;
-  --figma-color-bg-hover: #e8e8e8;
-  --figma-color-bg-selected: #daebf7;
-  --figma-color-bg-brand: #18a0fb;
+	--figma-color-bg: #ffffff;
+	--figma-color-bg-secondary: #f5f5f5;
+	--figma-color-bg-tertiary: #eeeeee;
+	--figma-color-bg-hover: #e8e8e8;
+	--figma-color-bg-selected: #daebf7;
+	--figma-color-bg-brand: #18a0fb;
 
-  --figma-color-text: #333333;
-  --figma-color-text-secondary: #757575;
-  --figma-color-text-tertiary: #b3b3b3;
-  --figma-color-text-onbrand: #ffffff;
-  --figma-color-text-danger: #f24822;
+	--figma-color-text: #333333;
+	--figma-color-text-secondary: #757575;
+	--figma-color-text-tertiary: #b3b3b3;
+	--figma-color-text-onbrand: #ffffff;
+	--figma-color-text-danger: #f24822;
 
-  --figma-color-border: #e5e5e5;
-  --figma-color-border-strong: #cccccc;
-  --figma-color-border-brand: #18a0fb;
-  --figma-color-border-focused: #18a0fb;
+	--figma-color-border: #e5e5e5;
+	--figma-color-border-strong: #cccccc;
+	--figma-color-border-brand: #18a0fb;
+	--figma-color-border-focused: #18a0fb;
 
-  --figma-color-icon: #333333;
-  --figma-color-icon-secondary: #757575;
+	--figma-color-icon: #333333;
+	--figma-color-icon-secondary: #757575;
 
-  --figma-color-disabled: #c0c0c0;
-  --figma-color-focus: #18a0fb;
+	--figma-color-disabled: #c0c0c0;
+	--figma-color-focus: #18a0fb;
 }
 
 [data-theme="dark"] {
-  color-scheme: dark;
+	color-scheme: dark;
 
-  --figma-color-bg: #2c2c2c;
-  --figma-color-bg-secondary: #383838;
-  --figma-color-bg-tertiary: #444444;
-  --figma-color-bg-hover: #4d4d4d;
-  --figma-color-bg-selected: #3d4f5f;
-  --figma-color-bg-brand: #18a0fb;
+	--figma-color-bg: #2c2c2c;
+	--figma-color-bg-secondary: #383838;
+	--figma-color-bg-tertiary: #444444;
+	--figma-color-bg-hover: #4d4d4d;
+	--figma-color-bg-selected: #3d4f5f;
+	--figma-color-bg-brand: #18a0fb;
 
-  --figma-color-text: #e0e0e0;
-  --figma-color-text-secondary: #a0a0a0;
-  --figma-color-text-tertiary: #6e6e6e;
-  --figma-color-text-onbrand: #ffffff;
-  --figma-color-text-danger: #ff6b55;
+	--figma-color-text: #e0e0e0;
+	--figma-color-text-secondary: #a0a0a0;
+	--figma-color-text-tertiary: #6e6e6e;
+	--figma-color-text-onbrand: #ffffff;
+	--figma-color-text-danger: #ff6b55;
 
-  --figma-color-border: #4d4d4d;
-  --figma-color-border-strong: #666666;
-  --figma-color-border-brand: #18a0fb;
-  --figma-color-border-focused: #18a0fb;
+	--figma-color-border: #4d4d4d;
+	--figma-color-border-strong: #666666;
+	--figma-color-border-brand: #18a0fb;
+	--figma-color-border-focused: #18a0fb;
 
-  --figma-color-icon: #e0e0e0;
-  --figma-color-icon-secondary: #a0a0a0;
+	--figma-color-icon: #e0e0e0;
+	--figma-color-icon-secondary: #a0a0a0;
 
-  --figma-color-disabled: #555555;
-  --figma-color-focus: #18a0fb;
+	--figma-color-disabled: #555555;
+	--figma-color-focus: #18a0fb;
 }
 
 body {
-  background: var(--color-bg-primary);
-  color: var(--color-text-primary);
+	background: var(--color-bg-primary);
+	color: var(--color-text-primary);
 }

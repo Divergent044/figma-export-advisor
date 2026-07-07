@@ -9,35 +9,35 @@ import type { ExportFormat, ExportConstraint } from './types';
 // ============================================================================
 
 export interface AnalyzeMessage {
-  type: 'analyze';
+	type: 'analyze';
 }
 
 export interface ValidateAndExportMessage {
-  type: 'validate-and-export';
-  format: ExportFormat;
-  constraint: ExportConstraint;
+	type: 'validate-and-export';
+	format: ExportFormat;
+	constraint: ExportConstraint;
 }
 
 export interface ForceExportMessage {
-  type: 'force-export';
-  format: ExportFormat;
-  constraint: ExportConstraint;
+	type: 'force-export';
+	format: ExportFormat;
+	constraint: ExportConstraint;
 }
 
 export interface ConfirmPngExportMessage {
-  type: 'confirm-png-export';
-  format: ExportFormat;
-  constraint: ExportConstraint;
+	type: 'confirm-png-export';
+	format: ExportFormat;
+	constraint: ExportConstraint;
 }
 
 export interface CancelMessage {
-  type: 'cancel';
+	type: 'cancel';
 }
 
 /** Объединённый тип всех сообщений от UI к code.ts */
 export type UIMessage =
-  | AnalyzeMessage
-  | ValidateAndExportMessage
-  | ForceExportMessage
-  | ConfirmPngExportMessage
-  | CancelMessage;
+	| AnalyzeMessage
+	| ValidateAndExportMessage
+	| ForceExportMessage
+	| ConfirmPngExportMessage
+	| CancelMessage;

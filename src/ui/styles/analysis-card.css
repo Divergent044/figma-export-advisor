@@ -1,63 +1,65 @@
 .empty-state {
-  text-align: center;
-  padding: 24px 8px;
+	text-align: center;
+	padding: 24px 8px;
 }
 .empty-state-icon {
-  font-size: 24px;
-  margin-bottom: 8px;
-  opacity: 0.3;
+	font-size: 24px;
+	margin-bottom: 8px;
+	opacity: 0.3;
 }
 .empty-state p {
-  color: var(--color-text-tertiary);
-  font-size: var(--font-size-xsmall);
+	color: var(--color-text-tertiary);
+	font-size: var(--font-size-xsmall);
 }
 
 .analysis-card {
-  background: var(--color-bg-secondary);
-  border: 1px solid var(--color-border-primary);
-  border-radius: var(--border-radius-med);
-  padding: 8px 12px;
-  margin-bottom: var(--size-xxsmall);
+	background: var(--color-bg-secondary);
+	border: 1px solid var(--color-border-primary);
+	border-radius: var(--border-radius-med);
+	padding: 8px 12px;
+	margin-bottom: var(--size-xxsmall);
 }
 .analysis-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 2px 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 2px 0;
 }
 .analysis-row + .analysis-row {
-  border-top: 1px solid var(--color-border-primary);
-  margin-top: 4px;
-  padding-top: 6px;
+	border-top: 1px solid var(--color-border-primary);
+	margin-top: 4px;
+	padding-top: 6px;
 }
 .analysis-key {
-  font-size: var(--font-size-xsmall);
-  color: var(--color-text-secondary);
+	font-size: var(--font-size-xsmall);
+	color: var(--color-text-secondary);
 }
 .analysis-value {
-  font-size: var(--font-size-xsmall);
-  color: var(--color-text-primary);
-  font-weight: var(--font-weight-medium);
+	font-size: var(--font-size-xsmall);
+	color: var(--color-text-primary);
+	font-weight: var(--font-weight-medium);
 }
-.analysis-value.recommended { color: var(--green); }
+.analysis-value.recommended {
+	color: var(--green);
+}
 
 .reasons-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
-  margin-top: 6px;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 4px;
+	margin-top: 6px;
 }
 .reason-badge {
-  font-size: 9px;
-  background: var(--color-bg-tertiary);
-  color: var(--color-text-secondary);
-  padding: 2px 6px;
-  border-radius: 3px;
-  border: 1px solid var(--color-border-primary);
+	font-size: 9px;
+	background: var(--color-bg-tertiary);
+	color: var(--color-text-secondary);
+	padding: 2px 6px;
+	border-radius: 3px;
+	border: 1px solid var(--color-border-primary);
 }
 
 .divider {
-  height: 1px;
-  background: var(--color-border-primary);
-  margin: var(--size-xxsmall) 0;
+	height: 1px;
+	background: var(--color-border-primary);
+	margin: var(--size-xxsmall) 0;
 }

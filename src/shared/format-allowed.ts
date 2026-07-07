@@ -6,9 +6,9 @@
 import type { ExportFormat } from './types';
 
 export interface FormatAnalysis {
-  isVector: boolean;
-  hasTransparency: boolean;
-  hasImageFill: boolean;
+	isVector: boolean;
+	hasTransparency: boolean;
+	hasImageFill: boolean;
 }
 
 /**
@@ -18,15 +18,18 @@ export interface FormatAnalysis {
  * - Растр + IMAGE fill (альфа неизвестна) → PNG рекомендуется, JPG допустим
  * - Растр без прозрачности и IMAGE → только JPG
  */
-export function isFormatAllowed(analysis: FormatAnalysis, format: ExportFormat): boolean {
-  if (analysis.isVector) {
-    return format === 'SVG';
-  }
-  if (analysis.hasTransparency) {
-    return format === 'PNG';
-  }
-  if (analysis.hasImageFill) {
-    return format === 'PNG' || format === 'JPG';
-  }
-  return format === 'JPG';
+export function isFormatAllowed(
+	analysis: FormatAnalysis,
+	format: ExportFormat,
+): boolean {
+	if (analysis.isVector) {
+		return format === 'SVG';
+	}
+	if (analysis.hasTransparency) {
+		return format === 'PNG';
+	}
+	if (analysis.hasImageFill) {
+		return format === 'PNG' || format === 'JPG';
+	}
+	return format === 'JPG';
 }

@@ -1,147 +1,150 @@
 .step-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-  margin: 10px auto;
-}.step-icon.warning {
-  background: rgba(255, 159, 67, 0.15);
-  border: 1px solid rgba(255, 159, 67, 0.4);
-  color: #ff9f43;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 20px;
+	margin: 10px auto;
+}
+.step-icon.warning {
+	background: rgba(255, 159, 67, 0.15);
+	border: 1px solid rgba(255, 159, 67, 0.4);
+	color: #ff9f43;
 }
 .step-icon.confirm {
-  background: rgba(24, 160, 251, 0.15);
-  border: 1px solid rgba(24, 160, 251, 0.4);
-  color: var(--blue);
+	background: rgba(24, 160, 251, 0.15);
+	border: 1px solid rgba(24, 160, 251, 0.4);
+	color: var(--blue);
 }
 .step-icon.success {
-  background: rgba(27, 196, 125, 0.15);
-  border: 1px solid rgba(27, 196, 125, 0.4);
-  color: var(--green);
+	background: rgba(27, 196, 125, 0.15);
+	border: 1px solid rgba(27, 196, 125, 0.4);
+	color: var(--green);
 }
 
 .step-title {
-  font-size: var(--font-size-large);
-  font-weight: var(--font-weight-bold);
-  color: var(--color-text-primary);
-  margin: 0 0 8px 0;
-  text-align: center;
+	font-size: var(--font-size-large);
+	font-weight: var(--font-weight-bold);
+	color: var(--color-text-primary);
+	margin: 0 0 8px 0;
+	text-align: center;
 }
 
 #stepReview p,
 #stepOptimize p {
-  font-size: var(--font-size-xsmall);
-  color: var(--color-text-secondary);
-  line-height: 1.5;
-  margin: 0 0 6px 0;
+	font-size: var(--font-size-xsmall);
+	color: var(--color-text-secondary);
+	line-height: 1.5;
+	margin: 0 0 6px 0;
 }
 
 #stepReview .format-hint-row {
-  display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
-  margin-top: 8px;
+	display: flex;
+	gap: 6px;
+	flex-wrap: wrap;
+	margin-top: 8px;
 }
 #stepReview .format-hint {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  font-size: var(--font-size-xsmall);
-  font-weight: var(--font-weight-bold);
-  padding: 3px 8px;
-  border-radius: var(--border-radius-small);
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+	font-size: var(--font-size-xsmall);
+	font-weight: var(--font-weight-bold);
+	padding: 3px 8px;
+	border-radius: var(--border-radius-small);
 }
 #stepReview .format-hint.current {
-  background: rgba(255, 159, 67, 0.15);
-  color: #ff9f43;
-  border: 1px solid rgba(255, 159, 67, 0.4);
+	background: rgba(255, 159, 67, 0.15);
+	color: #ff9f43;
+	border: 1px solid rgba(255, 159, 67, 0.4);
 }
 #stepReview .format-hint.recommended {
-  background: rgba(27, 196, 125, 0.15);
-  color: var(--green);
-  border: 1px solid rgba(27, 196, 125, 0.4);
+	background: rgba(27, 196, 125, 0.15);
+	color: var(--green);
+	border: 1px solid rgba(27, 196, 125, 0.4);
 }
 #stepReview .arrow-separator {
-  color: var(--color-text-tertiary);
-  font-size: var(--font-size-xsmall);
-  display: flex;
-  align-items: center;
+	color: var(--color-text-tertiary);
+	font-size: var(--font-size-xsmall);
+	display: flex;
+	align-items: center;
 }
 
 #stepReview .reasons {
-  margin-top: 6px;
-  margin-bottom: 12px;
+	margin-top: 6px;
+	margin-bottom: 12px;
 }
 #stepReview .reason-item {
-  font-size: 10px;
-  color: var(--color-text-secondary);
-  padding: 2px 0 2px 12px;
-  position: relative;
+	font-size: 10px;
+	color: var(--color-text-secondary);
+	padding: 2px 0 2px 12px;
+	position: relative;
 }
 #stepReview .reason-item::before {
-  content: '\2022';
-  position: absolute;
-  left: 2px;
-  color: #ff9f43;
+	content: "\2022";
+	position: absolute;
+	left: 2px;
+	color: #ff9f43;
 }
 
 .modal-actions {
-  display: flex;
-  gap: var(--size-xxsmall);
-  margin-top: 18px;
+	display: flex;
+	gap: var(--size-xxsmall);
+	margin-top: 18px;
 }
 
 .btn-modal-primary {
-  flex: 1;
-  padding: 7px 12px;
-  font-family: var(--font-stack);
-  font-size: var(--font-size-xsmall);
-  font-weight: var(--font-weight-bold);
-  color: var(--color-text-onbrand);
-  background: var(--blue);
-  border: 1px solid var(--blue);
-  border-radius: var(--border-radius-large);
-  cursor: pointer;
-  transition: all 100ms ease;
+	flex: 1;
+	padding: 7px 12px;
+	font-family: var(--font-stack);
+	font-size: var(--font-size-xsmall);
+	font-weight: var(--font-weight-bold);
+	color: var(--color-text-onbrand);
+	background: var(--blue);
+	border: 1px solid var(--blue);
+	border-radius: var(--border-radius-large);
+	cursor: pointer;
+	transition: all 100ms ease;
 }
-.btn-modal-primary:hover { background: #1a8cff; }
+.btn-modal-primary:hover {
+	background: #1a8cff;
+}
 
 .btn-modal-secondary {
-  flex: 1;
-  padding: 7px 12px;
-  font-family: var(--font-stack);
-  font-size: var(--font-size-xsmall);
-  font-weight: var(--font-weight-medium);
-  color: var(--color-text-secondary);
-  background: var(--color-bg-tertiary);
-  border: 1px solid var(--color-border-primary);
-  border-radius: var(--border-radius-large);
-  cursor: pointer;
-  transition: all 100ms ease;
+	flex: 1;
+	padding: 7px 12px;
+	font-family: var(--font-stack);
+	font-size: var(--font-size-xsmall);
+	font-weight: var(--font-weight-medium);
+	color: var(--color-text-secondary);
+	background: var(--color-bg-tertiary);
+	border: 1px solid var(--color-border-primary);
+	border-radius: var(--border-radius-large);
+	cursor: pointer;
+	transition: all 100ms ease;
 }
 .btn-modal-secondary:hover {
-  background: var(--color-bg-hover);
-  color: var(--color-text-primary);
+	background: var(--color-bg-hover);
+	color: var(--color-text-primary);
 }
 
 .back-nav {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: transparent;
-  border: none;
-  padding: 0 0 8px 0;
-  margin: 0;
-  font-family: var(--font-stack);
-  font-size: var(--font-size-xsmall);
-  font-weight: var(--font-weight-medium);
-  color: var(--color-text-secondary);
-  cursor: pointer;
-  transition: color 100ms ease;
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	background: transparent;
+	border: none;
+	padding: 0 0 8px 0;
+	margin: 0;
+	font-family: var(--font-stack);
+	font-size: var(--font-size-xsmall);
+	font-weight: var(--font-weight-medium);
+	color: var(--color-text-secondary);
+	cursor: pointer;
+	transition: color 100ms ease;
 }
 .back-nav:hover {
-  color: var(--color-text-primary);
+	color: var(--color-text-primary);
 }
